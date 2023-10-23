@@ -8,6 +8,7 @@ FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS builder
 ARG IMAGE_NAME="${IMAGE_NAME}"
 ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
 
+# 32-bit glibc for the Nvidia driver.
 RUN rpm-ostree install glibc.i686
 # install RPM-fusion
 RUN rpm-ostree install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
