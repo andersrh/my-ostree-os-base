@@ -15,3 +15,6 @@ ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
 RUN rpm-ostree override remove libavcodec-free libavfilter-free libavformat-free libavutil-free libpostproc-free libswresample-free libswscale-free mesa-va-drivers --install libavcodec-freeworld
 RUN mv /etc/yum.repos.d/rpmfusion-free.repo /tmp/rpmfusion-free.repo && rpm-ostree install mesa-va-drivers-freeworld && mv /tmp/rpmfusion-free.repo /etc/yum.repos.d/rpmfusion-free.repo
 RUN rpm-ostree install ffmpeg ffmpeg-libs intel-media-driver pipewire-codec-aptx libva-intel-driver libva-utils
+
+# install Nvidia software
+RUN rpm-ostree install nvidia-vaapi-driver nvidia-persistenced opencl-filesystem
